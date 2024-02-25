@@ -49,27 +49,27 @@ module ALU
         case (opcode)
         OP_ADD        :  begin y = a + b; end
         OP_ADD_CARRY  :  begin {carry_out, y} = a + b + carry_in; end
-	    OP_2s_COMP	  :  begin y = ~a + 1'b1; end
+        OP_2s_COMP	  :  begin y = ~a + 1'b1; end
         OP_SUB        :  begin {borrow, y} = a - b; end
         OP_INC        :  begin {carry_out, y} = a + 1'b1; end
         OP_DEC        :  begin {borrow, y} = a - 1'b1; end
-	    OP_MUL	  	  :  begin y = a*b; end
-	    OP_DIV		  :  begin y = a/b; end
-	    OP_MOD		  :  begin y = a%b; end
+	OP_MUL	      :  begin y = a*b; end
+	OP_DIV	      :  begin y = a/b; end
+	OP_MOD	      :  begin y = a%b; end
         OP_AND        :  begin y = a & b; end
-	    OP_OR		  :  begin y = a | b; end 
-	    OP_XOR		  :  begin y = a ^ b; end
+	OP_OR	      :  begin y = a | b; end 
+	OP_XOR	      :  begin y = a ^ b; end
         OP_NOT        :  begin y = ~a; end
         OP_ROL        :  begin y = {a[BUS_WIDTH-2:0], a[BUS_WIDTH-1]}; end
         OP_ROR        :  begin y = {a[0], a[BUS_WIDTH-1:1]}; end
-	    OP_ASR		  :  begin y = a >>> 1; end
-	    OP_ASL		  :  begin y = a <<< 1; end
-	    OP_LSR		  :  begin y = a >> 1; end
-	    OP_LSL		  :  begin y = a << 1; end
-	    OP_EQ		  :  begin y = (a==b); end
-	    OP_GR		  :  begin y = (a>b); end
-	    OP_LS		  :  begin y = (a<b); end
-            default: begin invalid_op = 1; y = 0; carry_out = 0; borrow = 0;  end
+	OP_ASR	      :  begin y = a >>> 1; end
+	OP_ASL	      :  begin y = a <<< 1; end
+	OP_LSR	      :  begin y = a >> 1; end
+	OP_LSL	      :  begin y = a << 1; end
+	OP_EQ	      :  begin y = (a==b); end
+	OP_GR	      :  begin y = (a>b); end
+	OP_LS	      :  begin y = (a<b); end
+        default	      : begin invalid_op = 1; y = 0; carry_out = 0; borrow = 0;  end
         endcase
     end
   
@@ -120,23 +120,23 @@ module ALU_tb();
 	// Test default from case
 	#1; $display("Testing Invalid Opcode");
 		opcode = 0; 
-    // Test OP_ADD
+        // Test OP_ADD
         #1  $display("a+b");
 		opcode = 1; a = 9; b = 33; carry_in = 0; 
-    // Test OP_ADD_CARRY
+        // Test OP_ADD_CARRY
         #1  $display("a+b+carry_in");
 		opcode = 2; a = 9; b = 33; carry_in = 1;     
 	// Test OP_2s_COMP
         #1  $display("2's complement of a");
 		opcode = 3; a = 8'b1001_0110;
-    // Test OP_SUB
+        // Test OP_SUB
         #1  $display("a-b");
 		opcode = 4; a = 65; b = 64; carry_in = 0; 
         #1 	opcode = 4; a = 65; b = 66; carry_in = 0; 
-    // Test OP_INC
+        // Test OP_INC
         #1  $display("a+1");
 		opcode = 5; a = 233; b = 69; carry_in = 1; 
-    // Test OP_DEC
+        // Test OP_DEC
         #1  $display("a-1");
 		opcode = 6; a = 0; b = 3; carry_in = 0; 
 	// Test OP_MUL
@@ -148,7 +148,7 @@ module ALU_tb();
 	// Test OP_MOD
         #1  $display("Remainder of a/b");
 		opcode = 9; a = 9; b = 2; carry_in = 0;
-    // Test OP_AND
+        // Test OP_AND
         #1  $display("a&b");
 		opcode = 10; a = 8'b0000_0010; b = 8'b0000_0011; 
 	// Test OP_OR
@@ -157,13 +157,13 @@ module ALU_tb();
 	// Test OP_XOR
         #1  $display("a^b");
 		opcode = 12; a = 8'b0000_0010; b = 8'b0000_0011;
-    // Test OP_NOT
+        // Test OP_NOT
         #1  $display("~a");
 		opcode = 13; a = 8'b1111_1111;  
 	// Test OP_ROL
         #1  $display("Rotate Left a");
 		opcode = 14; a = 8'b0000_0001; 
-    // Test OP_ROR
+       // Test OP_ROR
         #1  $display("Rotate Right a");
 		opcode = 15; a = 8'b1000_0000;
 	// Test OP_ASR
