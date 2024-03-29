@@ -49,7 +49,7 @@ module ALU
         case (opcode)
         OP_ADD        :  begin y = a + b; end
         OP_ADD_CARRY  :  begin {carry_out, y} = a + b + carry_in; end
-        OP_2s_COMP	  :  begin y = ~a + 1'b1; end
+        OP_2s_COMP    :  begin y = ~a + 1'b1; end
         OP_SUB        :  begin {borrow, y} = a - b; end
         OP_INC        :  begin {carry_out, y} = a + 1'b1; end
         OP_DEC        :  begin {borrow, y} = a - 1'b1; end
@@ -69,7 +69,7 @@ module ALU
 	OP_EQ	      :  begin y = (a==b); end
 	OP_GR	      :  begin y = (a>b); end
 	OP_LS	      :  begin y = (a<b); end
-        default	      : begin invalid_op = 1; y = 0; carry_out = 0; borrow = 0;  end
+        default	      :  begin invalid_op = 1; y = 0; carry_out = 0; borrow = 0;  end
         endcase
     end
   
