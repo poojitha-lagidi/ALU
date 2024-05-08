@@ -23,23 +23,20 @@ module ALU
     localparam OP_SUB = 4;       // Subtract B from A
     localparam OP_INC = 5;       // Increment A
     localparam OP_DEC = 6;       // Decrement A
-    localparam OP_MUL = 7;	 // Multiply A and B 
-    localparam OP_DIV = 8;	 // Divide A by B
-    localparam OP_MOD = 9;	 // A%B
     //Logical Operations
-    localparam OP_AND = 10;       // Bitwise AND
-    localparam OP_OR = 11;	 // Bitwise OR
-    localparam OP_XOR = 12;	 // Bitwise XOR
-    localparam OP_NOT = 13;      // Bitwise NOT (or) 1's complement
-    localparam OP_ROL = 14;      // Rotate Left
-    localparam OP_ROR = 15;      // Rotate Right  
-    localparam OP_ASR = 16;	 // Arithmetic Shift Right by one bit
-    localparam OP_ASL = 17;	 // Arithmetic Shift Left by one bit
-    localparam OP_LSR = 18;	 // Logical Shift Right by one bit
-    localparam OP_LSL = 19;	 // Logical Shift Left by one bit
-    localparam OP_EQ = 20;	 // Checks if A==B 
-    localparam OP_GR = 21;	 // Checks if A>B 
-    localparam OP_LS = 22;	 // Checks if A<B 
+    localparam OP_AND = 7;       // Bitwise AND
+    localparam OP_OR = 8;	 // Bitwise OR
+    localparam OP_XOR = 9;	 // Bitwise XOR
+    localparam OP_NOT = 10;      // Bitwise NOT (or) 1's complement
+    localparam OP_ROL = 11;      // Rotate Left
+    localparam OP_ROR = 12;      // Rotate Right  
+    localparam OP_ASR = 13;	 // Arithmetic Shift Right by one bit
+    localparam OP_ASL = 14;	 // Arithmetic Shift Left by one bit
+    localparam OP_LSR = 15;	 // Logical Shift Right by one bit
+    localparam OP_LSL = 16;	 // Logical Shift Left by one bit
+    localparam OP_EQ = 17;	 // Checks if A==B 
+    localparam OP_GR = 18;	 // Checks if A>B 
+    localparam OP_LS = 19;	 // Checks if A<B 
 
 //`localparam` is used to define constants that are local to a module and cannot be overridden.
 //`localparam` is similar to `parameter`, but with module scope.
@@ -53,9 +50,6 @@ module ALU
         OP_SUB        :  begin {borrow, y} = a - b; end
         OP_INC        :  begin {carry_out, y} = a + 1'b1; end
         OP_DEC        :  begin {borrow, y} = a - 1'b1; end
-	OP_MUL	      :  begin y = a*b; end
-	OP_DIV	      :  begin y = a/b; end
-	OP_MOD	      :  begin y = a%b; end
         OP_AND        :  begin y = a & b; end
 	OP_OR	      :  begin y = a | b; end 
 	OP_XOR	      :  begin y = a ^ b; end
@@ -139,53 +133,44 @@ module ALU_tb();
         // Test OP_DEC
         #1  $display("a-1");
 		opcode = 6; a = 0; b = 3; carry_in = 0; 
-	// Test OP_MUL
-        #1  $display("a*b");
-		opcode = 7; a = 9; b = 3; carry_in = 0;
-	// Test OP_DIV
-        #1  $display("a/b");
-		opcode = 8; a = 9; b = 3; carry_in = 0;
-	// Test OP_MOD
-        #1  $display("Remainder of a/b");
-		opcode = 9; a = 9; b = 2; carry_in = 0;
         // Test OP_AND
         #1  $display("a&b");
-		opcode = 10; a = 8'b0000_0010; b = 8'b0000_0011; 
+		opcode = 7; a = 8'b0000_0010; b = 8'b0000_0011; 
 	// Test OP_OR
         #1  $display("a|b");
-		opcode = 11; a = 8'b0000_0010; b = 8'b0000_0011;
+		opcode = 8; a = 8'b0000_0010; b = 8'b0000_0011;
 	// Test OP_XOR
         #1  $display("a^b");
-		opcode = 12; a = 8'b0000_0010; b = 8'b0000_0011;
+		opcode = 9; a = 8'b0000_0010; b = 8'b0000_0011;
         // Test OP_NOT
         #1  $display("~a");
-		opcode = 13; a = 8'b1111_1111;  
+		opcode = 10; a = 8'b1111_1111;  
 	// Test OP_ROL
         #1  $display("Rotate Left a");
-		opcode = 14; a = 8'b0000_0001; 
+		opcode = 11; a = 8'b0000_0001; 
        // Test OP_ROR
         #1  $display("Rotate Right a");
-		opcode = 15; a = 8'b1000_0000;
+		opcode = 12; a = 8'b1000_0000;
 	// Test OP_ASR
         #1  $display("Arithmetic Shift Right a");
-		opcode = 16; a = 8'b1000_0010;
+		opcode = 13; a = 8'b1000_0010;
 	// Test OP_ASL
         #1  $display("Arithmetic Shift Left a");
-		opcode = 17; a = 8'b1100_0010;
+		opcode = 14; a = 8'b1100_0010;
 	// Test OP_LSR
         #1  $display("Logical Shift Right a");
-		opcode = 18; a = 8'b1000_0010;
+		opcode = 15; a = 8'b1000_0010;
 	// Test OP_LSL
         #1  $display("Logical Shift Left a");
-		opcode = 19; a = 8'b1100_0010;
+		opcode = 16; a = 8'b1100_0010;
 	// Test OP_EQ
         #1  $display("a==b");
-		opcode = 20; a = 8'b1100_0010; b = 8'b0000_0010;
+		opcode = 17; a = 8'b1100_0010; b = 8'b0000_0010;
 	// Test OP_GR
         #1  $display("a>b");
-		opcode = 21; a = 8'b1100_0010; b = 8'b0000_0010;
+		opcode = 18; a = 8'b1100_0010; b = 8'b0000_0010;
 	// Test OP_LS
         #1  $display("a<b");
-		opcode = 22; a = 8'b1100_0010; b = 8'b0000_0010;
+		opcode = 19; a = 8'b1100_0010; b = 8'b0000_0010;
 	end
 endmodule 
