@@ -1,0 +1,308 @@
+run -all
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+#                    1 Test          0 a= 4, b= 1, carry_in=1, opcode= 8
+#                    1 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=0, parity=0, y= 5
+#                    1         Observed invalid_op=0, borrow=0, carry_out=0, zero=0, parity=0, y= 5
+#                    3 Test          1 a=13, b=13, carry_in=1, opcode=19
+#                    3 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                    3         Observed invalid_op=0, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                    5 Test          2 a= 1, b=13, carry_in=0, opcode=17
+#                    5 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                    5         Observed invalid_op=0, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                    7 Test          3 a=13, b=12, carry_in=1, opcode= 0
+#                    7 Success Expected invalid_op=1, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                    7         Observed invalid_op=1, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                    9 Test          4 a= 5, b=10, carry_in=1, opcode= 6
+#                    9 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y= 4
+#                    9         Observed invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y= 4
+#                   11 Test          5 a= 2, b=15, carry_in=0, opcode= 6
+#                   11 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y= 1
+#                   11         Observed invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y= 1
+#                   13 Test          6 a= 8, b= 5, carry_in=0, opcode= 8
+#                   13 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y=13
+#                   13         Observed invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y=13
+#                   15 Test          7 a=13, b= 5, carry_in=1, opcode= 1
+#                   15 Error Expected invalid_op=0, borrow=0, carry_out=1, zero=0, parity=1, y= 2
+#                   15       Observed invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y= 2
+#                   17 Test          8 a= 0, b= 0, carry_in=0, opcode=12
+#                   17 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                   17         Observed invalid_op=0, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                   19 Test          9 a= 6, b= 3, carry_in=1, opcode= 0
+#                   19 Success Expected invalid_op=1, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                   19         Observed invalid_op=1, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                   21 Test         10 a=11, b= 5, carry_in=0, opcode=18
+#                   21 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y= 1
+#                   21         Observed invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y= 1
+#                   23 Test         11 a=13, b=15, carry_in=1, opcode=17
+#                   23 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                   23         Observed invalid_op=0, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                   25 Test         12 a=10, b=12, carry_in=0, opcode= 8
+#                   25 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y=14
+#                   25         Observed invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y=14
+#                   27 Test         13 a= 1, b= 8, carry_in=0, opcode= 9
+#                   27 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=0, parity=0, y= 9
+#                   27         Observed invalid_op=0, borrow=0, carry_out=0, zero=0, parity=0, y= 9
+#                   29 Test         14 a=11, b= 6, carry_in=0, opcode= 1
+#                   29 Error Expected invalid_op=0, borrow=0, carry_out=1, zero=0, parity=1, y= 1
+#                   29       Observed invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y= 1
+#                   31 Test         15 a=12, b=10, carry_in=1, opcode= 8
+#                   31 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y=14
+#                   31         Observed invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y=14
+#                   33 Test         16 a= 5, b=15, carry_in=1, opcode= 9
+#                   33 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=0, parity=0, y=10
+#                   33         Observed invalid_op=0, borrow=0, carry_out=0, zero=0, parity=0, y=10
+#                   35 Test         17 a=14, b= 5, carry_in=1, opcode=13
+#                   35 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=0, parity=0, y=12
+#                   35         Observed invalid_op=0, borrow=0, carry_out=0, zero=0, parity=0, y=12
+#                   37 Test         18 a= 2, b=12, carry_in=1, opcode=17
+#                   37 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                   37         Observed invalid_op=0, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                   39 Test         19 a= 8, b= 7, carry_in=1, opcode= 2
+#                   39 Success Expected invalid_op=0, borrow=0, carry_out=1, zero=1, parity=0, y= 0
+#                   39         Observed invalid_op=0, borrow=0, carry_out=1, zero=1, parity=0, y= 0
+#                   41 Test         20 a=11, b= 9, carry_in=1, opcode= 9
+#                   41 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y= 2
+#                   41         Observed invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y= 2
+#                   43 Test         21 a= 7, b= 1, carry_in=0, opcode= 3
+#                   43 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=0, parity=0, y= 9
+#                   43         Observed invalid_op=0, borrow=0, carry_out=0, zero=0, parity=0, y= 9
+#                   45 Test         22 a= 2, b= 8, carry_in=1, opcode=18
+#                   45 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                   45         Observed invalid_op=0, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                   47 Test         23 a= 2, b=14, carry_in=1, opcode= 8
+#                   47 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y=14
+#                   47         Observed invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y=14
+#                   49 Test         24 a=15, b= 3, carry_in=1, opcode=17
+#                   49 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                   49         Observed invalid_op=0, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                   51 Test         25 a=11, b= 9, carry_in=1, opcode=10
+#                   51 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y= 4
+#                   51         Observed invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y= 4
+#                   53 Test         26 a= 8, b= 6, carry_in=0, opcode= 3
+#                   53 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y= 8
+#                   53         Observed invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y= 8
+#                   55 Test         27 a=10, b= 6, carry_in=1, opcode=19
+#                   55 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                   55         Observed invalid_op=0, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                   57 Test         28 a=15, b= 3, carry_in=1, opcode=12
+#                   57 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=0, parity=0, y=15
+#                   57         Observed invalid_op=0, borrow=0, carry_out=0, zero=0, parity=0, y=15
+#                   59 Test         29 a= 7, b=11, carry_in=0, opcode=13
+#                   59 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y=14
+#                   59         Observed invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y=14
+#                   61 Test         30 a= 9, b=13, carry_in=0, opcode= 2
+#                   61 Success Expected invalid_op=0, borrow=0, carry_out=1, zero=0, parity=0, y= 6
+#                   61         Observed invalid_op=0, borrow=0, carry_out=1, zero=0, parity=0, y= 6
+#                   63 Test         31 a= 5, b=15, carry_in=1, opcode=16
+#                   63 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=0, parity=0, y=10
+#                   63         Observed invalid_op=0, borrow=0, carry_out=0, zero=0, parity=0, y=10
+#                   65 Test         32 a= 0, b=10, carry_in=1, opcode= 0
+#                   65 Success Expected invalid_op=1, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                   65         Observed invalid_op=1, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                   67 Test         33 a=12, b=10, carry_in=1, opcode= 0
+#                   67 Success Expected invalid_op=1, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                   67         Observed invalid_op=1, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                   69 Test         34 a= 6, b=14, carry_in=1, opcode= 1
+#                   69 Error Expected invalid_op=0, borrow=0, carry_out=1, zero=0, parity=1, y= 4
+#                   69       Observed invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y= 4
+#                   71 Test         35 a= 6, b= 8, carry_in=1, opcode= 7
+#                   71 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                   71         Observed invalid_op=0, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                   73 Test         36 a= 4, b= 3, carry_in=0, opcode= 7
+#                   73 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                   73         Observed invalid_op=0, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                   75 Test         37 a=11, b=13, carry_in=1, opcode= 1
+#                   75 Error Expected invalid_op=0, borrow=0, carry_out=1, zero=0, parity=1, y= 8
+#                   75       Observed invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y= 8
+#                   77 Test         38 a= 6, b=10, carry_in=0, opcode= 3
+#                   77 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=0, parity=0, y=10
+#                   77         Observed invalid_op=0, borrow=0, carry_out=0, zero=0, parity=0, y=10
+#                   79 Test         39 a= 6, b= 4, carry_in=1, opcode=13
+#                   79 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=0, parity=0, y=12
+#                   79         Observed invalid_op=0, borrow=0, carry_out=0, zero=0, parity=0, y=12
+#                   81 Test         40 a= 4, b= 8, carry_in=0, opcode=16
+#                   81 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y= 8
+#                   81         Observed invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y= 8
+#                   83 Test         41 a= 7, b=14, carry_in=0, opcode=14
+#                   83 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=0, parity=0, y= 3
+#                   83         Observed invalid_op=0, borrow=0, carry_out=0, zero=0, parity=0, y= 3
+#                   85 Test         42 a=13, b= 9, carry_in=0, opcode=12
+#                   85 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y=14
+#                   85         Observed invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y=14
+#                   87 Test         43 a=10, b=13, carry_in=0, opcode= 4
+#                   87 Success Expected invalid_op=0, borrow=1, carry_out=0, zero=0, parity=1, y=13
+#                   87         Observed invalid_op=0, borrow=1, carry_out=0, zero=0, parity=1, y=13
+#                   89 Test         44 a= 3, b=10, carry_in=0, opcode= 0
+#                   89 Success Expected invalid_op=1, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                   89         Observed invalid_op=1, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                   91 Test         45 a= 5, b=10, carry_in=1, opcode= 5
+#                   91 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=0, parity=0, y= 6
+#                   91         Observed invalid_op=0, borrow=0, carry_out=0, zero=0, parity=0, y= 6
+#                   93 Test         46 a= 6, b= 0, carry_in=0, opcode= 8
+#                   93 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=0, parity=0, y= 6
+#                   93         Observed invalid_op=0, borrow=0, carry_out=0, zero=0, parity=0, y= 6
+#                   95 Test         47 a=13, b=12, carry_in=0, opcode= 9
+#                   95 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y= 1
+#                   95         Observed invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y= 1
+#                   97 Test         48 a=14, b=11, carry_in=1, opcode= 8
+#                   97 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=0, parity=0, y=15
+#                   97         Observed invalid_op=0, borrow=0, carry_out=0, zero=0, parity=0, y=15
+#                   99 Test         49 a=10, b= 1, carry_in=1, opcode= 2
+#                   99 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=0, parity=0, y=12
+#                   99         Observed invalid_op=0, borrow=0, carry_out=0, zero=0, parity=0, y=12
+#                  101 Test         50 a= 6, b= 0, carry_in=1, opcode=19
+#                  101 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                  101         Observed invalid_op=0, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                  103 Test         51 a= 9, b= 1, carry_in=1, opcode= 0
+#                  103 Success Expected invalid_op=1, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                  103         Observed invalid_op=1, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                  105 Test         52 a=11, b= 3, carry_in=0, opcode= 2
+#                  105 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y=14
+#                  105         Observed invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y=14
+#                  107 Test         53 a=14, b= 8, carry_in=1, opcode= 3
+#                  107 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y= 2
+#                  107         Observed invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y= 2
+#                  109 Test         54 a=14, b= 6, carry_in=1, opcode= 6
+#                  109 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y=13
+#                  109         Observed invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y=13
+#                  111 Test         55 a=10, b=13, carry_in=0, opcode=20
+#                  111 Success Expected invalid_op=1, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                  111         Observed invalid_op=1, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                  113 Test         56 a= 9, b= 8, carry_in=0, opcode= 0
+#                  113 Success Expected invalid_op=1, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                  113         Observed invalid_op=1, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                  115 Test         57 a=11, b= 7, carry_in=0, opcode= 0
+#                  115 Success Expected invalid_op=1, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                  115         Observed invalid_op=1, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                  117 Test         58 a= 4, b= 9, carry_in=0, opcode= 5
+#                  117 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=0, parity=0, y= 5
+#                  117         Observed invalid_op=0, borrow=0, carry_out=0, zero=0, parity=0, y= 5
+#                  119 Test         59 a=15, b= 6, carry_in=0, opcode= 6
+#                  119 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y=14
+#                  119         Observed invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y=14
+#                  121 Test         60 a= 2, b=13, carry_in=0, opcode= 5
+#                  121 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=0, parity=0, y= 3
+#                  121         Observed invalid_op=0, borrow=0, carry_out=0, zero=0, parity=0, y= 3
+#                  123 Test         61 a=10, b= 9, carry_in=1, opcode= 6
+#                  123 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=0, parity=0, y= 9
+#                  123         Observed invalid_op=0, borrow=0, carry_out=0, zero=0, parity=0, y= 9
+#                  125 Test         62 a=11, b=11, carry_in=1, opcode= 7
+#                  125 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y=11
+#                  125         Observed invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y=11
+#                  127 Test         63 a= 6, b= 5, carry_in=1, opcode= 4
+#                  127 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y= 1
+#                  127         Observed invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y= 1
+#                  129 Test         64 a= 8, b=14, carry_in=1, opcode=17
+#                  129 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                  129         Observed invalid_op=0, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                  131 Test         65 a= 8, b=13, carry_in=1, opcode=10
+#                  131 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y= 7
+#                  131         Observed invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y= 7
+#                  133 Test         66 a=14, b=13, carry_in=0, opcode=19
+#                  133 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                  133         Observed invalid_op=0, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                  135 Test         67 a= 1, b= 6, carry_in=1, opcode=18
+#                  135 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                  135         Observed invalid_op=0, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                  137 Test         68 a= 8, b= 3, carry_in=0, opcode= 2
+#                  137 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y=11
+#                  137         Observed invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y=11
+#                  139 Test         69 a= 2, b= 4, carry_in=1, opcode=16
+#                  139 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y= 4
+#                  139         Observed invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y= 4
+#                  141 Test         70 a= 2, b= 8, carry_in=1, opcode=20
+#                  141 Success Expected invalid_op=1, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                  141         Observed invalid_op=1, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                  143 Test         71 a= 1, b=11, carry_in=1, opcode= 4
+#                  143 Success Expected invalid_op=0, borrow=1, carry_out=0, zero=0, parity=0, y= 6
+#                  143         Observed invalid_op=0, borrow=1, carry_out=0, zero=0, parity=0, y= 6
+#                  145 Test         72 a= 7, b= 1, carry_in=1, opcode= 7
+#                  145 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y= 1
+#                  145         Observed invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y= 1
+#                  147 Test         73 a= 8, b= 6, carry_in=0, opcode=15
+#                  147 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y= 4
+#                  147         Observed invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y= 4
+#                  149 Test         74 a= 6, b= 1, carry_in=1, opcode=13
+#                  149 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=0, parity=0, y=12
+#                  149         Observed invalid_op=0, borrow=0, carry_out=0, zero=0, parity=0, y=12
+#                  151 Test         75 a=11, b= 5, carry_in=1, opcode= 8
+#                  151 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=0, parity=0, y=15
+#                  151         Observed invalid_op=0, borrow=0, carry_out=0, zero=0, parity=0, y=15
+#                  153 Test         76 a= 4, b= 7, carry_in=1, opcode=17
+#                  153 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                  153         Observed invalid_op=0, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                  155 Test         77 a= 9, b=11, carry_in=1, opcode= 6
+#                  155 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y= 8
+#                  155         Observed invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y= 8
+#                  157 Test         78 a= 1, b=10, carry_in=0, opcode= 7
+#                  157 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                  157         Observed invalid_op=0, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                  159 Test         79 a= 3, b=12, carry_in=0, opcode=18
+#                  159 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                  159         Observed invalid_op=0, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                  161 Test         80 a= 8, b=15, carry_in=0, opcode= 2
+#                  161 Success Expected invalid_op=0, borrow=0, carry_out=1, zero=0, parity=1, y= 7
+#                  161         Observed invalid_op=0, borrow=0, carry_out=1, zero=0, parity=1, y= 7
+#                  163 Test         81 a= 8, b= 0, carry_in=0, opcode=14
+#                  163 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y= 4
+#                  163         Observed invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y= 4
+#                  165 Test         82 a= 5, b= 0, carry_in=0, opcode=15
+#                  165 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y= 2
+#                  165         Observed invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y= 2
+#                  167 Test         83 a= 0, b=12, carry_in=0, opcode=13
+#                  167 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                  167         Observed invalid_op=0, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                  169 Test         84 a= 5, b= 1, carry_in=1, opcode= 2
+#                  169 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y= 7
+#                  169         Observed invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y= 7
+#                  171 Test         85 a= 9, b= 6, carry_in=1, opcode= 2
+#                  171 Success Expected invalid_op=0, borrow=0, carry_out=1, zero=1, parity=0, y= 0
+#                  171         Observed invalid_op=0, borrow=0, carry_out=1, zero=1, parity=0, y= 0
+#                  173 Test         86 a=13, b=10, carry_in=1, opcode=19
+#                  173 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                  173         Observed invalid_op=0, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                  175 Test         87 a=12, b= 1, carry_in=1, opcode=16
+#                  175 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y= 8
+#                  175         Observed invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y= 8
+#                  177 Test         88 a= 7, b=14, carry_in=0, opcode= 6
+#                  177 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=0, parity=0, y= 6
+#                  177         Observed invalid_op=0, borrow=0, carry_out=0, zero=0, parity=0, y= 6
+#                  179 Test         89 a= 0, b= 0, carry_in=0, opcode= 2
+#                  179 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                  179         Observed invalid_op=0, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                  181 Test         90 a=13, b=13, carry_in=1, opcode=15
+#                  181 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=0, parity=0, y= 6
+#                  181         Observed invalid_op=0, borrow=0, carry_out=0, zero=0, parity=0, y= 6
+#                  183 Test         91 a=14, b=13, carry_in=1, opcode= 6
+#                  183 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y=13
+#                  183         Observed invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y=13
+#                  185 Test         92 a= 3, b= 3, carry_in=1, opcode=20
+#                  185 Success Expected invalid_op=1, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                  185         Observed invalid_op=1, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                  187 Test         93 a= 4, b= 5, carry_in=0, opcode=11
+#                  187 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y= 8
+#                  187         Observed invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y= 8
+#                  189 Test         94 a= 2, b= 8, carry_in=1, opcode=14
+#                  189 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y= 1
+#                  189         Observed invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y= 1
+#                  191 Test         95 a= 4, b= 6, carry_in=0, opcode=20
+#                  191 Success Expected invalid_op=1, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                  191         Observed invalid_op=1, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                  193 Test         96 a= 7, b=10, carry_in=0, opcode= 8
+#                  193 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=0, parity=0, y=15
+#                  193         Observed invalid_op=0, borrow=0, carry_out=0, zero=0, parity=0, y=15
+#                  195 Test         97 a=12, b= 0, carry_in=0, opcode=20
+#                  195 Success Expected invalid_op=1, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                  195         Observed invalid_op=1, borrow=0, carry_out=0, zero=1, parity=0, y= 0
+#                  197 Test         98 a= 6, b= 5, carry_in=0, opcode= 5
+#                  197 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y= 7
+#                  197         Observed invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y= 7
+#                  199 Test         99 a= 9, b= 4, carry_in=1, opcode= 6
+#                  199 Success Expected invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y= 8
+#                  199         Observed invalid_op=0, borrow=0, carry_out=0, zero=0, parity=1, y= 8
+#                  200 Test Results success_count=         96, error_count=          4, test_count=        100
+# ** Note: $stop    : D:/ModelSim/Udemy Excercises/ALU/ALU_using_GOLDEN_Model.v(196)
+#    Time: 210 us  Iteration: 0  Instance: /ALU_using_GOLDEN_Model_tb
+# Break in Module ALU_using_GOLDEN_Model_tb at D:/ModelSim/Udemy Excercises/ALU/ALU_using_GOLDEN_Model.v line 196
